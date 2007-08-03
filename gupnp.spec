@@ -1,11 +1,11 @@
 Summary:	UPnP library
 Name:		gupnp
-Version:	0.2
+Version:	0.3
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	246a6fd299ec7f50d70b827de28fd98a
+# Source0-md5:	cec6ee39845d77d27ce121b3aeb665e5
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
