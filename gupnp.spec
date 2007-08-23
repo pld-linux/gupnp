@@ -1,12 +1,12 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.3
+Version:	0.4
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	cec6ee39845d77d27ce121b3aeb665e5
+# Source0-md5:	cad68344c0053d7142bc6792f54c6a82
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
