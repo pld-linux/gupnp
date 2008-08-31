@@ -1,16 +1,16 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.10
+Version:	0.12.2
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp/%{name}-%{version}.tar.gz
-# Source0-md5:	854240ebbf3b39c3ef6e5e914eea5217
+# Source0-md5:	5350f5f28fb3742779702a496ab75d72
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	gssdp-devel >= 0.6
+BuildRequires:	gssdp-devel >= 0.6.2
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	libuuid-devel >= 1.36
@@ -99,8 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog NEWS README
+%attr(755,root,root) %{_bindir}/gupnp-binding-tool
 %attr(755,root,root) %{_libdir}/libgupnp-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.0
+%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.2
 
 %files devel
 %defattr(644,root,root,755)
