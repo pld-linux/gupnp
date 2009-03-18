@@ -1,19 +1,22 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.12.2
+Version:	0.12.6
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp/%{name}-%{version}.tar.gz
-# Source0-md5:	5350f5f28fb3742779702a496ab75d72
+# Source0-md5:	651c72e2c7353aa9aa9cea24c54b40c0
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gssdp-devel >= 0.6.2
 BuildRequires:	gtk-doc >= 1.0
+BuildRequires:	libsoup-devel >= 2.4.1
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	libuuid-devel >= 1.36
+BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
 BuildRequires:	shared-mime-info
 Requires:	shared-mime-info
@@ -35,8 +38,11 @@ Summary:	Header files for gupnp
 Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gssdp-devel >= 0.3
+Requires:	glib2-devel >= 1:2.18.0
+Requires:	gssdp-devel >= 0.6.2
+Requires:	libsoup-devel >= 2.4.1
 Requires:	libuuid-devel >= 1.36
+Requires:	libxml2-devel >= 1:2.6.30
 
 %description devel
 This package contains header files for the Linux SDK for UPnP Devices
@@ -81,7 +87,9 @@ Dokumentacja API gupnp.
 %{__autoheader}
 %{__automake}
 %configure \
+	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
+
 %{__make}
 
 %install
