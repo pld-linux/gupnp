@@ -1,12 +1,12 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.12.6
+Version:	0.12.8
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp/%{name}-%{version}.tar.gz
-# Source0-md5:	651c72e2c7353aa9aa9cea24c54b40c0
+# Source0-md5:	ad20138c6da78cd03a056d30e40e36b9
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
@@ -18,8 +18,6 @@ BuildRequires:	libtool >= 2:1.5
 BuildRequires:	libuuid-devel >= 1.36
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
-BuildRequires:	shared-mime-info
-Requires:	shared-mime-info
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
