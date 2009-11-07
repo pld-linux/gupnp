@@ -1,17 +1,17 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.12.8
+Version:	0.13.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp/%{name}-%{version}.tar.gz
-# Source0-md5:	ad20138c6da78cd03a056d30e40e36b9
+# Source0-md5:	9b5fcf8146ba9a2bd84382f61717aa0e
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	glib2-devel >= 1:2.18.0
-BuildRequires:	gssdp-devel >= 0.6.2
+BuildRequires:	gssdp-devel >= 0.7.0
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libsoup-devel >= 2.4.1
 BuildRequires:	libtool >= 2:1.5
@@ -37,7 +37,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.18.0
-Requires:	gssdp-devel >= 0.6.2
+Requires:	gssdp-devel >= 0.7.0
 Requires:	libsoup-devel >= 2.4.1
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gupnp-binding-tool
 %attr(755,root,root) %{_libdir}/libgupnp-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.2
+%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.3
 
 %files devel
 %defattr(644,root,root,755)
