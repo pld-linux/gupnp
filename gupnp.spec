@@ -1,17 +1,18 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.13.1
+Version:	0.13.2
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp/%{name}-%{version}.tar.gz
-# Source0-md5:	9b5fcf8146ba9a2bd84382f61717aa0e
+# Source0-md5:	eca3f79b32deb43f5de752d6cf2c160d
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	glib2-devel >= 1:2.18.0
-BuildRequires:	gssdp-devel >= 0.7.0
+BuildRequires:	gssdp-devel >= 0.7.1
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libsoup-devel >= 2.4.1
 BuildRequires:	libtool >= 2:1.5
@@ -37,7 +38,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.18.0
-Requires:	gssdp-devel >= 0.7.0
+Requires:	gssdp-devel >= 0.7.1
 Requires:	libsoup-devel >= 2.4.1
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
@@ -86,7 +87,8 @@ Dokumentacja API gupnp.
 %{__automake}
 %configure \
 	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--with-context-manager=network-manager
 
 %{__make}
 
