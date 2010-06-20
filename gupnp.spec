@@ -1,17 +1,19 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.13.2
+Version:	0.13.4
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.gupnp.org/sources/gupnp/%{name}-%{version}.tar.gz
-# Source0-md5:	eca3f79b32deb43f5de752d6cf2c160d
+# Source0-md5:	0d562f5f02534c70c3743b2c514db8ba
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.76
+BuildRequires:	gir-repository-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
+BuildRequires:	gobject-introspection-devel >= 0.6.4
 BuildRequires:	gssdp-devel >= 0.7.1
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libsoup-devel >= 2.4.1
@@ -79,6 +81,7 @@ Dokumentacja API gupnp.
 %setup -q
 
 %build
+mkdir m4
 %{__gtkdocize}
 %{__libtoolize}
 %{__aclocal}
@@ -88,7 +91,8 @@ Dokumentacja API gupnp.
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
-	--with-context-manager=network-manager
+	--with-context-manager=network-manager \
+	--disable-silent-rules
 
 %{__make}
 
@@ -110,11 +114,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gupnp-binding-tool
 %attr(755,root,root) %{_libdir}/libgupnp-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.3
+%{_libdir}/girepository-1.0/GUPnP-1.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgupnp-1.0.so
 %{_libdir}/libgupnp-1.0.la
+%{_datadir}/gir-1.0/GUPnP-1.0.gir
 %{_includedir}/gupnp-1.0
 %{_pkgconfigdir}/gupnp-1.0.pc
 
