@@ -1,17 +1,16 @@
 Summary:	UPnP library
 Summary(pl.UTF-8):	Biblioteka UPnP
 Name:		gupnp
-Version:	0.13.4
+Version:	0.14.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://www.gupnp.org/sources/gupnp/%{name}-%{version}.tar.gz
-# Source0-md5:	0d562f5f02534c70c3743b2c514db8ba
+Source0:	http://www.gupnp.org/sites/all/files/sources/%{name}-%{version}.tar.gz
+# Source0-md5:	8598922256faa5adb28657d0c10a3e3e
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.76
-BuildRequires:	gir-repository-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gobject-introspection-devel >= 0.6.4
 BuildRequires:	gssdp-devel >= 0.7.1
