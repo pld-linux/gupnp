@@ -11,6 +11,8 @@ URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.76
+BuildRequires:	docbook-dtd412-xml
+BuildRequires:	docbook-dtd44-xml
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gobject-introspection-devel >= 0.6.4
 BuildRequires:	gssdp-devel >= 0.7.1
@@ -20,6 +22,7 @@ BuildRequires:	libtool >= 2:1.5
 BuildRequires:	libuuid-devel >= 1.36
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
