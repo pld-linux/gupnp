@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
 # note: 0.14.x is stable, 0.15.x unstable
 Version:	0.14.1
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: http://gupnp.org/download
@@ -109,6 +109,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -126,7 +128,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgupnp-1.0.so
-%{_libdir}/libgupnp-1.0.la
 %{_datadir}/gir-1.0/GUPnP-1.0.gir
 %{_includedir}/gupnp-1.0
 %{_pkgconfigdir}/gupnp-1.0.pc
