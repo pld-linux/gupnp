@@ -1,34 +1,32 @@
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
-# note: 0.14.x is stable, 0.15.x unstable
-Version:	0.14.1
-Release:	2
+# note: 0.16.x is stable, 0.17.x unstable
+Version:	0.16.1
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 #Source0Download: http://gupnp.org/download
 Source0:	http://gupnp.org/sites/all/files/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	47d0eb5997d4f08713dce6b2c4e47f80
+# Source0-md5:	021bb237741532af4bca50157ff326e4
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
-BuildRequires:	glib2-devel >= 1:2.18
+BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gobject-introspection-devel >= 0.6.4
-BuildRequires:	gssdp-devel >= 0.7.1
+BuildRequires:	gssdp-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.0
-BuildRequires:	libsoup-devel >= 2.4.1
+BuildRequires:	libsoup-devel >= 2.28.2
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	libuuid-devel >= 1.36
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
-Requires:	dbus-glib >= 0.76
-Requires:	glib2 >= 1:2.18
-Requires:	gssdp >= 0.7.1
-Requires:	libsoup >= 2.4.1
+Requires:	glib2 >= 1:2.26.0
+Requires:	gssdp >= 0.10.0
+Requires:	libsoup >= 2.28.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,9 +45,9 @@ Summary:	Header files for gupnp
 Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.18
-Requires:	gssdp-devel >= 0.7.1
-Requires:	libsoup-devel >= 2.4.1
+Requires:	glib2-devel >= 1:2.26.0
+Requires:	gssdp-devel >= 0.10.0
+Requires:	libsoup-devel >= 2.28.2
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
 
@@ -89,6 +87,7 @@ Dokumentacja API gupnp.
 %setup -q
 
 %build
+mkdir m4
 %{__gtkdocize}
 %{__libtoolize}
 %{__aclocal}
