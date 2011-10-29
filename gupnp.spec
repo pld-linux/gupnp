@@ -1,31 +1,32 @@
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
-# note: 0.16.x is stable, 0.17.x unstable
-Version:	0.16.1
+# note: 0.18.x is stable, 0.19.x unstable
+Version:	0.18.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-#Source0Download: http://gupnp.org/download
-Source0:	http://gupnp.org/sites/all/files/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	021bb237741532af4bca50157ff326e4
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/0.18/%{name}-%{version}.tar.xz
+# Source0-md5:	cfee1920c67a1a11312599c1fadd4a67
 URL:		http://gupnp.org/
-BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	autoconf >= 2.64
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gobject-introspection-devel >= 0.6.4
-BuildRequires:	gssdp-devel >= 0.10.0
+BuildRequires:	gssdp-devel >= 0.12.0
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libsoup-devel >= 2.28.2
-BuildRequires:	libtool >= 2:1.5
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libuuid-devel >= 1.36
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	glib2 >= 1:2.26.0
-Requires:	gssdp >= 0.10.0
+Requires:	gssdp >= 0.12.0
 Requires:	libsoup >= 2.28.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,7 +47,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.26.0
-Requires:	gssdp-devel >= 0.10.0
+Requires:	gssdp-devel >= 0.12.0
 Requires:	libsoup-devel >= 2.28.2
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
@@ -87,10 +88,9 @@ Dokumentacja API gupnp.
 %setup -q
 
 %build
-mkdir m4
 %{__gtkdocize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -121,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gupnp-binding-tool
 %attr(755,root,root) %{_libdir}/libgupnp-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.3
+%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.4
 %{_libdir}/girepository-1.0/GUPnP-1.0.typelib
 
 %files devel
