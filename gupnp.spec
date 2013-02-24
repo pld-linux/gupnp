@@ -29,6 +29,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.14}
+%{?with_vala:BuildRequires:	vala-gssdp >= 0.13.0}
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.26.0
 Requires:	gssdp >= 0.13.0
