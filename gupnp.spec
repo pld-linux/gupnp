@@ -1,13 +1,17 @@
+#
+# Conditional build:
+%bcond_without	vala	# Vala API
+#
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
-# note: 0.18.x is stable, 0.19.x unstable
-Version:	0.18.4
+# note: 0.20.x is stable, 0.21.x unstable
+Version:	0.20.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/0.18/%{name}-%{version}.tar.xz
-# Source0-md5:	0e15fa26be7b1a0255e6dec07c285527
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/0.20/%{name}-%{version}.tar.xz
+# Source0-md5:	5d6403a0521b33a904e4c118d2188751
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
@@ -15,7 +19,7 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gobject-introspection-devel >= 0.6.4
-BuildRequires:	gssdp-devel >= 0.12.0
+BuildRequires:	gssdp-devel >= 0.13.0
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	libsoup-devel >= 2.28.2
 BuildRequires:	libtool >= 2:2.2
@@ -24,9 +28,10 @@ BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
+%{?with_vala:BuildRequires:	vala >= 2:0.14}
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.26.0
-Requires:	gssdp >= 0.12.0
+Requires:	gssdp >= 0.13.0
 Requires:	libsoup >= 2.28.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,7 +52,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.26.0
-Requires:	gssdp-devel >= 0.12.0
+Requires:	gssdp-devel >= 0.13.0
 Requires:	libsoup-devel >= 2.28.2
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
@@ -83,6 +88,20 @@ gupnp API documentation.
 
 %description apidocs -l pl.UTF-8
 Dokumentacja API gupnp.
+
+%package -n vala-gupnp
+Summary:	Vala API for gupnp library
+Summary(pl.UTF-8):	API języka Vala dla biblioteki gupnp
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	vala >= 2:0.14
+Requires:	vala-gssdp >= 0.13.0
+
+%description -n vala-gupnp
+Vala API for gupnp library.
+
+%description -n vala-gupnp -l pl.UTF-8
+API języka Vala dla biblioteki gupnp.
 
 %prep
 %setup -q
@@ -138,3 +157,10 @@ rm -rf $RPM_BUILD_ROOT
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/gupnp
+
+%if %{with vala}
+%files -n vala-gupnp
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/gupnp-1.0.deps
+%{_datadir}/vala/vapi/gupnp-1.0.vapi
+%endif
