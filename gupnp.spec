@@ -6,18 +6,18 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
 # note: 0.20.x is stable, 0.21.x unstable
-Version:	0.20.13
-Release:	2
+Version:	0.20.14
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/0.20/%{name}-%{version}.tar.xz
-# Source0-md5:	515c2a824193e9cc5ae3a1ed4026ef42
+# Source0-md5:	63346ef90ac5cd925c3a941f51d8bca6
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.40.0
 BuildRequires:	gobject-introspection-devel >= 1.36.0
 BuildRequires:	gssdp-devel >= 0.13.0
 BuildRequires:	gtk-doc >= 1.14
@@ -31,7 +31,7 @@ BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
 %{?with_vala:BuildRequires:	vala-gssdp >= 0.13.0}
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.28.0
+Requires:	glib2 >= 1:2.40.0
 Requires:	gssdp >= 0.13.0
 Requires:	libsoup >= 2.48.0
 Requires:	libuuid >= 1.36
@@ -53,7 +53,7 @@ Summary:	Header files for gupnp
 Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.28.0
+Requires:	glib2-devel >= 1:2.40.0
 Requires:	gssdp-devel >= 0.13.0
 Requires:	libsoup-devel >= 2.48.0
 Requires:	libuuid-devel >= 1.36
