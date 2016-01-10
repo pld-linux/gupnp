@@ -1,13 +1,13 @@
 #
 # Conditional build:
 %bcond_without	vala	# Vala API
-#
+
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
 # note: 0.20.x is stable, 0.21.x unstable
 Version:	0.20.15
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/0.20/%{name}-%{version}.tar.xz
@@ -84,6 +84,9 @@ Summary:	gupnp API documentation
 Summary(pl.UTF-8):	Dokumentacja API gupnp
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 gupnp API documentation.
