@@ -6,12 +6,12 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
 # note: 0.20.x is stable, 0.21.x unstable
-Version:	0.20.16
-Release:	2
+Version:	0.20.17
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/0.20/%{name}-%{version}.tar.xz
-# Source0-md5:	d3c7eea2c883816432e8e021ae1283ed
+# Source0-md5:	97458f496450c5fd6416ff685fb5be08
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
@@ -19,7 +19,7 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	glib2-devel >= 1:2.40.0
 BuildRequires:	gobject-introspection-devel >= 1.36.0
-BuildRequires:	gssdp-devel >= 0.14.13
+BuildRequires:	gssdp-devel >= 0.14.15
 BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool >= 2:2.2
@@ -30,10 +30,10 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
-%{?with_vala:BuildRequires:	vala-gssdp >= 0.14.13}
+%{?with_vala:BuildRequires:	vala-gssdp >= 0.14.15}
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.40.0
-Requires:	gssdp >= 0.14.13
+Requires:	gssdp >= 0.14.15
 Requires:	libsoup >= 2.48.0
 Requires:	libuuid >= 1.36
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,7 +55,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.40.0
-Requires:	gssdp-devel >= 0.14.13
+Requires:	gssdp-devel >= 0.14.15
 Requires:	libsoup-devel >= 2.48.0
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
@@ -101,7 +101,7 @@ Summary(pl.UTF-8):	API języka Vala dla biblioteki gupnp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.20
-Requires:	vala-gssdp >= 0.14.13
+Requires:	vala-gssdp >= 0.14.15
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
 %endif
