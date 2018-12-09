@@ -6,12 +6,12 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
 # note: 1.0.x is stable, 1.1.x unstable
-Version:	1.0.2
+Version:	1.0.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/1.0/%{name}-%{version}.tar.xz
-# Source0-md5:	afd96fe73856b38aaf1baf7526e08edd
+# Source0-md5:	0d1a440a2b72bb1f468727e52f8735b9
 URL:		http://gupnp.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
