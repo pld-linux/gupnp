@@ -5,35 +5,35 @@
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
-# note: 1.0.x is stable, 1.1.x unstable
-Version:	1.0.3
+# note: 1.2.x is stable, 1.3.x unstable
+Version:	1.2.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/1.0/%{name}-%{version}.tar.xz
-# Source0-md5:	0d1a440a2b72bb1f468727e52f8735b9
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/1.2/%{name}-%{version}.tar.xz
+# Source0-md5:	5b3eb6cfb7c7d3b68c5a0991b8dde41f
 URL:		http://gupnp.org/
-BuildRequires:	autoconf >= 2.64
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
-BuildRequires:	glib2-devel >= 1:2.40.0
+BuildRequires:	glib2-devel >= 1:2.58
 BuildRequires:	gobject-introspection-devel >= 1.36.0
-BuildRequires:	gssdp-devel >= 0.14.15
+BuildRequires:	gssdp-devel >= 1.1.3
 BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	libsoup-devel >= 2.48.0
-BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libuuid-devel >= 1.36
 BuildRequires:	libxml2-devel >= 1:2.6.30
+BuildRequires:	meson
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
-%{?with_vala:BuildRequires:	vala-gssdp >= 0.14.15}
+%{?with_vala:BuildRequires:	vala-gssdp >= 1.1.3}
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.40.0
-Requires:	gssdp >= 0.14.15
+Requires:	glib2 >= 1:2.58
+Requires:	gssdp >= 1.1.3
 Requires:	libsoup >= 2.48.0
 Requires:	libuuid >= 1.36
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,8 +54,8 @@ Summary:	Header files for gupnp
 Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.40.0
-Requires:	gssdp-devel >= 0.14.15
+Requires:	glib2-devel >= 1:2.58
+Requires:	gssdp-devel >= 1.1.3
 Requires:	libsoup-devel >= 2.48.0
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
@@ -101,7 +101,7 @@ Summary(pl.UTF-8):	API języka Vala dla biblioteki gupnp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.20
-Requires:	vala-gssdp >= 0.14.15
+Requires:	vala-gssdp >= 1.1.3
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
 %endif
@@ -115,30 +115,19 @@ API języka Vala dla biblioteki gupnp.
 %prep
 %setup -q
 
-%{__sed} -i -e '1s,/usr/bin/env python,%{__python},' tools/gupnp-binding-tool
+%{__sed} -i -e '1s,/usr/bin/env python3,%{__python3},' tools/gupnp-binding-tool-1.2
 
 %build
-%{__gtkdocize}
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules \
-	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir} \
-	--with-context-manager=network-manager
+%meson build \
+	-Dcontext_manager=network-manager \
+	-Dgtk_doc=true
 
-%{__make}
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+%ninja_install -C build
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -148,22 +137,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_bindir}/gupnp-binding-tool
-%attr(755,root,root) %{_libdir}/libgupnp-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.0.so.4
-%{_libdir}/girepository-1.0/GUPnP-1.0.typelib
+%doc AUTHORS NEWS README
+%attr(755,root,root) %{_bindir}/gupnp-binding-tool-1.2
+%attr(755,root,root) %{_libdir}/libgupnp-1.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.2.so.0
+%{_libdir}/girepository-1.0/GUPnP-1.2.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgupnp-1.0.so
-%{_datadir}/gir-1.0/GUPnP-1.0.gir
-%{_includedir}/gupnp-1.0
-%{_pkgconfigdir}/gupnp-1.0.pc
+%attr(755,root,root) %{_libdir}/libgupnp-1.2.so
+%{_datadir}/gir-1.0/GUPnP-1.2.gir
+%{_includedir}/gupnp-1.2
+%{_pkgconfigdir}/gupnp-1.2.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libgupnp-1.0.a
+%{_libdir}/libgupnp-1.2.a
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -172,6 +161,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with vala}
 %files -n vala-gupnp
 %defattr(644,root,root,755)
-%{_datadir}/vala/vapi/gupnp-1.0.deps
-%{_datadir}/vala/vapi/gupnp-1.0.vapi
+%{_datadir}/vala/vapi/gupnp-1.2.deps
+%{_datadir}/vala/vapi/gupnp-1.2.vapi
 %endif
