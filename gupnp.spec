@@ -85,9 +85,7 @@ Summary:	gupnp API documentation
 Summary(pl.UTF-8):	Dokumentacja API gupnp
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 gupnp API documentation.
@@ -102,9 +100,7 @@ Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.20
 Requires:	vala-gssdp >= 1.2.3
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description -n vala-gupnp
 Vala API for gupnp library.
