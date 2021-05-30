@@ -6,12 +6,13 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
 # note: 1.2.x is stable, 1.3.x unstable
-Version:	1.2.4
+Version:	1.2.6
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gupnp/1.2/%{name}-%{version}.tar.xz
-# Source0-md5:	7c9c7cd80e36d9fb1e5b0267571fc17d
+Source0:	https://download.gnome.org/sources/gupnp/1.2/%{name}-%{version}.tar.xz
+# Source0-md5:	88ed75784b63e6e5a7df863b3b8afb12
+Patch0:		%{name}-format.patch
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
@@ -22,7 +23,7 @@ BuildRequires:	gtk-doc >= 1.14
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libuuid-devel >= 1.36
 BuildRequires:	libxml2-devel >= 1:2.6.30
-BuildRequires:	meson >= 0.48.0
+BuildRequires:	meson >= 0.53.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
@@ -110,6 +111,7 @@ API języka Vala dla biblioteki gupnp.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %{__sed} -i -e '1s,/usr/bin/env python3,%{__python3},' tools/gupnp-binding-tool-1.2
 
