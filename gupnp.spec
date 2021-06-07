@@ -6,17 +6,16 @@ Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
 # note: 1.2.x is stable, 1.3.x unstable
-Version:	1.2.6
+Version:	1.2.7
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/gupnp/1.2/%{name}-%{version}.tar.xz
-# Source0-md5:	88ed75784b63e6e5a7df863b3b8afb12
-Patch0:		%{name}-format.patch
+# Source0-md5:	850a2d879e58aed634158360f68a9f75
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
-BuildRequires:	glib2-devel >= 1:2.58
+BuildRequires:	glib2-devel >= 1:2.66
 BuildRequires:	gobject-introspection-devel >= 1.36.0
 BuildRequires:	gssdp-devel >= 1.2.3
 BuildRequires:	gtk-doc >= 1.14
@@ -33,7 +32,7 @@ BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
 %{?with_vala:BuildRequires:	vala-gssdp >= 1.2.3}
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.58
+Requires:	glib2 >= 1:2.66
 Requires:	gssdp >= 1.2.3
 Requires:	libsoup >= 2.48.0
 Requires:	libuuid >= 1.36
@@ -55,7 +54,7 @@ Summary:	Header files for gupnp
 Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.58
+Requires:	glib2-devel >= 1:2.66
 Requires:	gssdp-devel >= 1.2.3
 Requires:	libsoup-devel >= 2.48.0
 Requires:	libuuid-devel >= 1.36
@@ -111,7 +110,6 @@ API języka Vala dla biblioteki gupnp.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %{__sed} -i -e '1s,/usr/bin/env python3,%{__python3},' tools/gupnp-binding-tool-1.2
 
