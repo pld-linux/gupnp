@@ -1,39 +1,41 @@
 #
 # Conditional build:
+%bcond_without	apidocs	# gtk-doc based API documentation
 %bcond_without	vala	# Vala API
 
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
-# note: 1.2.x is stable, 1.3.x unstable
-Version:	1.2.7
+# note: 1.4.x is stable, 1.5.x unstable
+Version:	1.4.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/gupnp/1.2/%{name}-%{version}.tar.xz
-# Source0-md5:	850a2d879e58aed634158360f68a9f75
+Source0:	https://download.gnome.org/sources/gupnp/1.4/%{name}-%{version}.tar.xz
+# Source0-md5:	91e9d1b925c084bcf6265b1391752275
 URL:		https://wiki.gnome.org/Projects/GUPnP
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-dtd44-xml
 BuildRequires:	glib2-devel >= 1:2.66
 BuildRequires:	gobject-introspection-devel >= 1.36.0
-BuildRequires:	gssdp-devel >= 1.2.3
-BuildRequires:	gtk-doc >= 1.14
+BuildRequires:	gssdp-devel >= 1.3.0
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.14}
 BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libuuid-devel >= 1.36
 BuildRequires:	libxml2-devel >= 1:2.6.30
-BuildRequires:	meson >= 0.53.0
+BuildRequires:	meson >= 0.54.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.20}
-%{?with_vala:BuildRequires:	vala-gssdp >= 1.2.3}
+%{?with_vala:BuildRequires:	vala-gssdp >= 1.3.0}
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.66
-Requires:	gssdp >= 1.2.3
+Requires:	gssdp >= 1.3.0
 Requires:	libsoup >= 2.48.0
 Requires:	libuuid >= 1.36
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,7 +57,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gupnp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.66
-Requires:	gssdp-devel >= 1.2.3
+Requires:	gssdp-devel >= 1.3.0
 Requires:	libsoup-devel >= 2.48.0
 Requires:	libuuid-devel >= 1.36
 Requires:	libxml2-devel >= 1:2.6.30
@@ -99,7 +101,7 @@ Summary(pl.UTF-8):	API języka Vala dla biblioteki gupnp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.20
-Requires:	vala-gssdp >= 1.2.3
+Requires:	vala-gssdp >= 1.3.0
 BuildArch:	noarch
 
 %description -n vala-gupnp
@@ -116,7 +118,7 @@ API języka Vala dla biblioteki gupnp.
 %build
 %meson build \
 	-Dcontext_manager=network-manager \
-	-Dgtk_doc=true
+	%{?with_apidocs:-Dgtk_doc=true}
 
 %ninja_build -C build
 
@@ -133,10 +135,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %attr(755,root,root) %{_bindir}/gupnp-binding-tool-1.2
 %attr(755,root,root) %{_libdir}/libgupnp-1.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.2.so.0
+%attr(755,root,root) %ghost %{_libdir}/libgupnp-1.2.so.1
 %{_libdir}/girepository-1.0/GUPnP-1.2.typelib
 %{_mandir}/man1/gupnp-binding-tool-1.2.1*
 
@@ -151,9 +153,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libgupnp-1.2.a
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/gupnp
+%endif
 
 %if %{with vala}
 %files -n vala-gupnp
