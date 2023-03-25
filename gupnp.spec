@@ -6,7 +6,7 @@
 Summary:	UPnP library based on GObject and libsoup
 Summary(pl.UTF-8):	Biblioteka UPnP oparta na bibliotekach GObject i libsoup
 Name:		gupnp
-# note: 1.4.x is stable, 1.5.x unstable
+# note: 1.4.x is stable libsoup 2.x based version; for libsoup3 based 1.6+ see gupnp1.6.spec
 Version:	1.4.4
 Release:	1
 License:	LGPL v2+
