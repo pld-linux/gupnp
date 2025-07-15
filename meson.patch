@@ -1,0 +1,21 @@
+diff -ur gupnp-1.4.4.org/subprojects/gssdp-1.2.wrap gupnp-1.4.4/subprojects/gssdp-1.2.wrap
+--- gupnp-1.4.4.org/subprojects/gssdp-1.2.wrap	2022-11-09 12:25:35.000000000 +0100
++++ gupnp-1.4.4/subprojects/gssdp-1.2.wrap	2025-07-15 16:00:38.242911829 +0200
+@@ -3,6 +3,4 @@
+ revision = gssdp-1.4
+ depth = 1
+  
+-[provides]
+-dependency_name = gssdp-1.2
+ 
+Only in gupnp-1.4.4/subprojects: gssdp-1.2.wrap~
+--- gupnp-1.4.4.org/meson.build	2022-11-09 12:25:35.000000000 +0100
++++ gupnp-1.4.4/meson.build	2025-07-15 16:03:04.326616033 +0200
+@@ -25,7 +25,6 @@ conf.set('HAVE_LINUX_WIRELESS_H', cc.has
+ conf.set('HAVE_IFA_FLAGS', ifa_flags_exists)
+ 
+ glib_version = '2.66'
+-add_project_arguments(cc.get_supported_arguments('-Werror=deprecated-declarations'), language: 'c')
+ conf.set('GLIB_VERSION_MIN_REQUIRED', 'GLIB_VERSION_' + glib_version.underscorify())
+ conf.set('GLIB_VERSION_MAX_ALLOWED', 'GLIB_VERSION_' + glib_version.underscorify())
+ 
