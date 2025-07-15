@@ -119,16 +119,16 @@ API języka Vala dla biblioteki gupnp.
 %{__sed} -i -e '1s,/usr/bin/env python3,%{__python3},' tools/gupnp-binding-tool-1.2
 
 %build
-%meson build \
+%meson \
 	-Dcontext_manager=network-manager \
 	%{?with_apidocs:-Dgtk_doc=true}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
